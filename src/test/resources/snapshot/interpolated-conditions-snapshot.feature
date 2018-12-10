@@ -1,7 +1,7 @@
 #Author: ted.velkoff@ionep.com
 #Keywords Summary : interpolated conditions snapshot
 @interpolated-conditions
-@streaming
+@snapshot
 Feature: Interpolated conditions snapshots
 	Operations that query for snapshots of interpolated conditions.
 

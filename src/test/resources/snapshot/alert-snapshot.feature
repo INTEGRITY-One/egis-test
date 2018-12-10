@@ -1,7 +1,7 @@
 #Author: ted.velkoff@ionep.com
 #Keywords Summary : alert snapshot
 @alert
-@streaming
+@snapshot
 Feature: Alert snapshots
 	Operations that query for snapshots of alerts.
 

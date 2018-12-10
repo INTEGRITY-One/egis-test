@@ -1,7 +1,7 @@
 #Author: ted.velkoff@ionep.com
 #Keywords Summary : daily forecasts snapshot
 @daily-forecasts
-@streaming
+@snapshot
 Feature: Daily forecast snapshots
 	Operations that query for snapshots of daily forecasts.
 

@@ -1,7 +1,7 @@
 #Author: ted.velkoff@ionep.com
 #Keywords Summary : hourly forecasts snapshot
 @hourly-forecasts
-@streaming
+@snapshot
 Feature: Hourly forecast snapshots
 	Operations that query for snapshots of hourly forecasts.
 
