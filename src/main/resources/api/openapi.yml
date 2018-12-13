@@ -10,7 +10,7 @@ info:
 servers:
   - url: 'http://ionep.com/weather'
 paths:
-  '/weather/cities':
+  /weather/cities:
     get:
       description: Return all cities
       responses:
@@ -147,7 +147,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  '/weather/cities/geo/':
+  /weather/cities/geo/:
     get:
       description: Return one city identified by geo-coordinates
       parameters:
@@ -176,7 +176,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  '/weather/cities/':
+  /weather/cities/:
     get:
       description: Return one city identified by postal code and country code (optional)
       parameters:
@@ -203,7 +203,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  '/weather/regions':
+  /weather/regions:
     get:
       description: Return all regions
       responses:
@@ -340,7 +340,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  '/weather/regions/geo/':
+  /weather/regions/geo/:
     get:
       description: Return one region identified by geo-coordinates
       parameters:
@@ -361,6 +361,724 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Region'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/forecasters:
+    get:
+      description: Return all forecasters
+      responses:
+        '200':
+          description: Multiple forecaster response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forecaster'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Create a new forecaster
+      requestBody:
+        description: New forecaster
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewForecaster'
+      responses:
+        '200':
+          description: Forecaster creation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forecaster'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/forecasters/{id}':
+    get:
+      description: Return one forecaster identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Forecaster response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forecaster'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update forecaster identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Updated forecaster
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewForecaster'
+      responses:
+        '200':
+          description: Forecaster update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forecaster'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete forecaster identified by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Forecaster deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/forecasters/{name}':
+    get:
+      description: Return one forecaster identified by name and country code (optional)
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Forecaster response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forecaster'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/forecasters/geo/:
+    get:
+      description: Return one forecaster identified by geo-coordinates
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: Forecaster response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forecaster'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/forecasters/:
+    get:
+      description: Return one forecaster identified by postal code and country code (optional)
+      parameters:
+        - name: postalCode
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Forecaster response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forecaster'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/interpolators:
+    get:
+      description: Return all interpolators
+      responses:
+        '200':
+          description: Multiple interpolator response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Interpolator'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Create a new interpolator
+      requestBody:
+        description: New interpolator
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewInterpolator'
+      responses:
+        '200':
+          description: Interpolator creation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Interpolator'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/interpolators/{id}':
+    get:
+      description: Return one interpolator identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Interpolator response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Interpolator'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update interpolator identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Updated interpolator
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewForecaster'
+      responses:
+        '200':
+          description: Interpolator update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Interpolator'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete interpolator identified by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Interpolator deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/interpolators/geo/:
+    get:
+      description: Return one interpolator identified by geo-coordinates
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: Interpolator response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Interpolator'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/alerters:
+    get:
+      description: Return all alerters
+      responses:
+        '200':
+          description: Multiple alerter response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Alerter'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Create a new alerter
+      requestBody:
+        description: New alerter
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewAlerter'
+      responses:
+        '200':
+          description: Alerter creation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alerter'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/alerters/{id}':
+    get:
+      description: Return one alerter identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Alerter response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alerter'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update alerter identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Updated alerter
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewAlerter'
+      responses:
+        '200':
+          description: Alerter update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alerter'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete alerter identified by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Alerter deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/alerters/{name}':
+    get:
+      description: Return one alerter identified by name and country code (optional)
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Alerter response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alerter'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/alerters/geo/:
+    get:
+      description: Return one alerter identified by geo-coordinates
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: Alerter response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alerter'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/alerters/:
+    get:
+      description: Return one alerter identified by postal code and country code (optional)
+      parameters:
+        - name: postalCode
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Alerter response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alerter'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/analyzers:
+    get:
+      description: Return all analyzers
+      responses:
+        '200':
+          description: Multiple analyzer response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Analyzer'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Create a new analyzer
+      requestBody:
+        description: New analyzer
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewAnalyzer'
+      responses:
+        '200':
+          description: Analyzer creation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analyzer'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/analyzers/{id}':
+    get:
+      description: Return one analyzer identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Analyzer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analyzer'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update analyzer identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Updated analyzer
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewAnalyzer'
+      responses:
+        '200':
+          description: Analyzer update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analyzer'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete analyzer identified by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Analyzer deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/analyzers/{name}':
+    get:
+      description: Return one analyzer identified by name and country code (optional)
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Analyzer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analyzer'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/analyzers/geo/:
+    get:
+      description: Return one analyzer identified by geo-coordinates
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: Analyzer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analyzer'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /weather/analyzers/:
+    get:
+      description: Return one analyzer identified by postal code and country code (optional)
+      parameters:
+        - name: postalCode
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Analyzer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analyzer'
         default:
           description: unexpected error
           content:
@@ -396,10 +1114,111 @@ components:
         lon:
           type: number
           format: double
+    Forecaster:
+      allOf:
+        - $ref: '#/components/schemas/NewForecaster'
+        - required:
+            - id
+          properties:
+            id:
+              type: integer
+              format: int64
+    NewForecaster:
+      required:
+        - name
+        - postalCode
+      properties:
+        name:
+          type: string
+        postalCode:
+          type: string
+        countryCode:
+          type: integer
+          format: double
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    Interpolator:
+      allOf:
+        - $ref: '#/components/schemas/NewInterpolator'
+        - required:
+            - id
+          properties:
+            id:
+              type: integer
+              format: int64
+    NewInterpolator:
+      required:
+        - name
+        - postalCode
+      properties:
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    Alerter:
+      allOf:
+        - $ref: '#/components/schemas/NewAlerter'
+        - required:
+            - id
+          properties:
+            id:
+              type: integer
+              format: int64
+    NewAlerter:
+      required:
+        - name
+        - postalCode
+      properties:
+        name:
+          type: string
+        postalCode:
+          type: string
+        countryCode:
+          type: integer
+          format: double
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    Analyzer:
+      allOf:
+        - $ref: '#/components/schemas/NewAnalyzer'
+        - required:
+            - id
+          properties:
+            id:
+              type: integer
+              format: int64
+    NewAnalyzer:
+      required:
+        - name
+        - postalCode
+      properties:
+        name:
+          type: string
+        postalCode:
+          type: string
+        countryCode:
+          type: integer
+          format: double
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
     Point:
       required:
-      - lat
-      - lon
+        - lat
+        - lon
       properties:
         lat:
           type: number
@@ -418,9 +1237,9 @@ components:
               format: int64
     NewRegion:
       required:
-      - upperLeft
-      - lowerRight
-      - name
+        - upperLeft
+        - lowerRight
+        - name
       properties:
         name:
           type: string
