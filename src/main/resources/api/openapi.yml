@@ -1,0 +1,443 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Weather
+  description: Demonstration application in support of EGIS proposal
+  contact:
+    name: Ted Velkoff
+    email: ted.velkoff@ionep.com
+    url: 'http://ionep.com'
+servers:
+  - url: 'http://ionep.com/weather'
+paths:
+  '/weather/cities':
+    get:
+      description: Return all cities
+      responses:
+        '200':
+          description: Multiple city response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Create a new city
+      requestBody:
+        description: New city
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCity'
+      responses:
+        '200':
+          description: City creation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/cities/{id}':
+    get:
+      description: Return one city identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: City response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update city identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Updated city
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCity'
+      responses:
+        '200':
+          description: City update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete city identified by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: City deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/cities/{name}':
+    get:
+      description: Return one city identified by name and country code (optional)
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: City response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/cities/geo/':
+    get:
+      description: Return one city identified by geo-coordinates
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: City response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/cities/':
+    get:
+      description: Return one city identified by postal code and country code (optional)
+      parameters:
+        - name: postalCode
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: City response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/regions':
+    get:
+      description: Return all regions
+      responses:
+        '200':
+          description: Multiple region response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Region'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Create a new city
+      requestBody:
+        description: New city
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCity'
+      responses:
+        '200':
+          description: Creation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/regions/{id}':
+    get:
+      description: Return one region identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Region response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Region'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update region identified by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Updated region
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewRegion'
+      responses:
+        '200':
+          description: Region update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Region'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete region identified by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Region deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/regions/{name}':
+    get:
+      description: Return one region identified by name and country code (optional)
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Region response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Region'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/weather/regions/geo/':
+    get:
+      description: Return one region identified by geo-coordinates
+      parameters:
+        - name: upperLeft
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Point'
+        - name: lowerRight
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Point'
+      responses:
+        '200':
+          description: Region response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Region'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    City:
+      allOf:
+        - $ref: '#/components/schemas/NewCity'
+        - required:
+            - id
+          properties:
+            id:
+              type: integer
+              format: int64
+    NewCity:
+      required:
+        - name
+        - postalCode
+      properties:
+        name:
+          type: string
+        postalCode:
+          type: string
+        countryCode:
+          type: integer
+          format: double
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    Point:
+      required:
+      - lat
+      - lon
+      properties:
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    Region:
+      allOf:
+        - $ref: '#/components/schemas/NewRegion'
+        - required:
+            - id
+          properties:
+            id:
+              type: integer
+              format: int64
+    NewRegion:
+      required:
+      - upperLeft
+      - lowerRight
+      - name
+      properties:
+        name:
+          type: string
+        upperLeft:
+          $ref: '#/components/schemas/Point'
+        lowerRight:
+          $ref: '#/components/schemas/Point'
+        countryCode:
+          type: integer
+          format: int32
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
