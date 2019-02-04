@@ -54,12 +54,12 @@ paths:
     get:
       description: Return one city identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '200':
           description: City response
@@ -76,12 +76,12 @@ paths:
     put:
       description: Update city identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       requestBody:
         description: Updated city
         required: true
@@ -105,12 +105,12 @@ paths:
     delete:
       description: Delete city identified by ID
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '204':
           description: City deleted
@@ -124,16 +124,16 @@ paths:
     get:
       description: Return one city identified by name and country code (optional)
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: countryCode
-          in: query
-          schema:
-            type: integer
-            format: int32
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: integer
+          format: int32
       responses:
         '200':
           description: City response
@@ -151,16 +151,16 @@ paths:
     get:
       description: Return one city identified by geo-coordinates
       parameters:
-        - name: lat
-          in: query
-          required: true
-          schema:
+      - name: lat
+        in: query
+        required: true
+        schema:
             type: number
             format: double
-        - name: lon
-          in: query
-          required: true
-          schema:
+      - name: lon
+        in: query
+        required: true
+        schema:
             type: number
             format: double
       responses:
@@ -180,16 +180,16 @@ paths:
     get:
       description: Return one city identified by postal code and country code (optional)
       parameters:
-        - name: postalCode
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: countryCode
-          in: query
-          schema:
-            type: integer
-            format: int32
+      - name: postalCode
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: integer
+          format: int32
       responses:
         '200':
           description: City response
@@ -247,12 +247,12 @@ paths:
     get:
       description: Return one region identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '200':
           description: Region response
@@ -269,12 +269,12 @@ paths:
     put:
       description: Update region identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       requestBody:
         description: Updated region
         required: true
@@ -298,12 +298,12 @@ paths:
     delete:
       description: Delete region identified by ID
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '204':
           description: Region deleted
@@ -317,16 +317,16 @@ paths:
     get:
       description: Return one region identified by name and country code (optional)
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: countryCode
-          in: query
-          schema:
-            type: integer
-            format: int32
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: integer
+          format: int32
       responses:
         '200':
           description: Region response
@@ -344,16 +344,16 @@ paths:
     get:
       description: Return one region identified by geo-coordinates
       parameters:
-        - name: upperLeft
-          in: query
-          required: true
-          schema:
-            $ref: '#/components/schemas/Point'
-        - name: lowerRight
-          in: query
-          required: true
-          schema:
-            $ref: '#/components/schemas/Point'
+      - name: upperLeft
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Point'
+      - name: lowerRight
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Point'
       responses:
         '200':
           description: Region response
@@ -411,12 +411,12 @@ paths:
     get:
       description: Return one forecaster identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '200':
           description: Forecaster response
@@ -433,12 +433,12 @@ paths:
     put:
       description: Update forecaster identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       requestBody:
         description: Updated forecaster
         required: true
@@ -462,12 +462,12 @@ paths:
     delete:
       description: Delete forecaster identified by ID
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '204':
           description: Forecaster deleted
@@ -481,16 +481,16 @@ paths:
     get:
       description: Return one forecaster identified by name and country code (optional)
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: countryCode
-          in: query
-          schema:
-            type: integer
-            format: int32
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: integer
+          format: int32
       responses:
         '200':
           description: Forecaster response
@@ -508,16 +508,16 @@ paths:
     get:
       description: Return one forecaster identified by geo-coordinates
       parameters:
-        - name: lat
-          in: query
-          required: true
-          schema:
+      - name: lat
+        in: query
+        required: true
+        schema:
             type: number
             format: double
-        - name: lon
-          in: query
-          required: true
-          schema:
+      - name: lon
+        in: query
+        required: true
+        schema:
             type: number
             format: double
       responses:
@@ -537,16 +537,16 @@ paths:
     get:
       description: Return one forecaster identified by postal code and country code (optional)
       parameters:
-        - name: postalCode
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: countryCode
-          in: query
-          schema:
-            type: integer
-            format: int32
+      - name: postalCode
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: integer
+          format: int32
       responses:
         '200':
           description: Forecaster response
@@ -604,12 +604,12 @@ paths:
     get:
       description: Return one interpolator identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+        name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '200':
           description: Interpolator response
@@ -626,12 +626,12 @@ paths:
     put:
       description: Update interpolator identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       requestBody:
         description: Updated interpolator
         required: true
@@ -655,12 +655,12 @@ paths:
     delete:
       description: Delete interpolator identified by ID
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '204':
           description: Interpolator deleted
@@ -674,16 +674,16 @@ paths:
     get:
       description: Return one interpolator identified by geo-coordinates
       parameters:
-        - name: lat
-          in: query
-          required: true
-          schema:
+      - name: lat
+        in: query
+        required: true
+        schema:
             type: number
             format: double
-        - name: lon
-          in: query
-          required: true
-          schema:
+      - name: lon
+        in: query
+        required: true
+        schema:
             type: number
             format: double
       responses:
@@ -743,12 +743,12 @@ paths:
     get:
       description: Return one alerter identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '200':
           description: Alerter response
@@ -765,12 +765,12 @@ paths:
     put:
       description: Update alerter identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       requestBody:
         description: Updated alerter
         required: true
@@ -794,12 +794,12 @@ paths:
     delete:
       description: Delete alerter identified by ID
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '204':
           description: Alerter deleted
@@ -813,16 +813,16 @@ paths:
     get:
       description: Return one alerter identified by name and country code (optional)
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: countryCode
-          in: query
-          schema:
-            type: integer
-            format: int32
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: integer
+          format: int32
       responses:
         '200':
           description: Alerter response
@@ -840,16 +840,16 @@ paths:
     get:
       description: Return one alerter identified by geo-coordinates
       parameters:
-        - name: lat
-          in: query
-          required: true
-          schema:
+      - name: lat
+        in: query
+        required: true
+        schema:
             type: number
             format: double
-        - name: lon
-          in: query
-          required: true
-          schema:
+      - name: lon
+        in: query
+        required: true
+        schema:
             type: number
             format: double
       responses:
@@ -869,16 +869,16 @@ paths:
     get:
       description: Return one alerter identified by postal code and country code (optional)
       parameters:
-        - name: postalCode
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: countryCode
-          in: query
-          schema:
-            type: integer
-            format: int32
+      - name: postalCode
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: integer
+          format: int32
       responses:
         '200':
           description: Alerter response
@@ -936,12 +936,12 @@ paths:
     get:
       description: Return one analyzer identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '200':
           description: Analyzer response
@@ -958,12 +958,12 @@ paths:
     put:
       description: Update analyzer identified by id
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       requestBody:
         description: Updated analyzer
         required: true
@@ -987,12 +987,12 @@ paths:
     delete:
       description: Delete analyzer identified by ID
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         '204':
           description: Analyzer deleted
@@ -1006,16 +1006,16 @@ paths:
     get:
       description: Return one analyzer identified by name and country code (optional)
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: countryCode
-          in: query
-          schema:
-            type: integer
-            format: int32
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: integer
+          format: int32
       responses:
         '200':
           description: Analyzer response
@@ -1029,20 +1029,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /weather/analyzers/geo/:
+  '/weather/analyzers/geo/':
     get:
       description: Return one analyzer identified by geo-coordinates
       parameters:
-        - name: lat
-          in: query
-          required: true
-          schema:
+      - name: lat
+        in: query
+        required: true
+        schema:
             type: number
             format: double
-        - name: lon
-          in: query
-          required: true
-          schema:
+      - name: lon
+        in: query
+        required: true
+        schema:
             type: number
             format: double
       responses:
@@ -1058,20 +1058,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /weather/analyzers/:
+  '/weather/analyzers/':
     get:
       description: Return one analyzer identified by postal code and country code (optional)
       parameters:
-        - name: postalCode
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: countryCode
-          in: query
-          schema:
-            type: integer
-            format: int32
+      - name: postalCode
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: integer
+          format: int32
       responses:
         '200':
           description: Analyzer response
@@ -1107,7 +1107,7 @@ components:
           type: string
         countryCode:
           type: integer
-          format: double
+          format: int32
         lat:
           type: number
           format: double
@@ -1134,7 +1134,7 @@ components:
           type: string
         countryCode:
           type: integer
-          format: double
+          format: int32
         lat:
           type: number
           format: double
@@ -1181,7 +1181,7 @@ components:
           type: string
         countryCode:
           type: integer
-          format: double
+          format: int32
         lat:
           type: number
           format: double
@@ -1208,7 +1208,7 @@ components:
           type: string
         countryCode:
           type: integer
-          format: double
+          format: int32
         lat:
           type: number
           format: double
