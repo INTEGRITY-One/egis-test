@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class AnalyzerAdministration {
+public class AnalyzerAdministrationIT {
 
 	@When("I create a new analyzer")
 	public void i_create_a_new_analyzer() {

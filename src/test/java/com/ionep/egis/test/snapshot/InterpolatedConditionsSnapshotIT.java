@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class InterpolatedConditionsSnapshot {
+public class InterpolatedConditionsSnapshotIT {
 
 	@When("I query for snapshot of interpolated conditions for a geographic locaion")
 	public void i_query_for_snapshot_of_interpolated_conditions_for_a_geographic_locaion() {

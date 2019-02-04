@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class AlertHistory {
+public class AlertHistoryIT {
 
 	@When("I query for history of alerts for a city by name")
 	public void i_query_for_history_of_alerts_for_a_city_by_name() {

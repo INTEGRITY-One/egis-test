@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class ForecasterAdministration {
+public class ForecasterAdministrationIT {
 
 	@When("I create a new forecaster")
 	public void i_create_a_new_forecaster() {

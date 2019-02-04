@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class CityAdministration {
+public class CityAdministrationIT {
 
 	@When("I create a new city")
 	public void i_create_a_new_city() {

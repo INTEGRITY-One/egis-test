@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class InterpolatorAdministration {
+public class InterpolatorAdministrationIT {
 
 	@When("I create a new interpolator")
 	public void i_create_a_new_interpolator() {

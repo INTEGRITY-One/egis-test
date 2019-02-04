@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class DataSourceAdministration {
+public class DataSourceAdministrationIT {
 
 	@When("I toggle the data-source")
 	public void i_toggle_the_data_source() {

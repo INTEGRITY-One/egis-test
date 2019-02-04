@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class RegionAdministration {
+public class RegionAdministrationIT {
 
 	@When("I create a new region")
 	public void i_create_a_new_region() {

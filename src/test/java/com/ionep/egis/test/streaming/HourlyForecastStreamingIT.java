@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class HourlyForecastStreaming {
+public class HourlyForecastStreamingIT {
 
 	@When("I start a stream of hourly forecasts for a city that exists")
 	public void i_start_a_stream_of_hourly_forecasts_for_a_city_that_exists() {

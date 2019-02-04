@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class AlerterAdministration {
+public class AlerterAdministrationIT {
 
 	@When("I create a new alerter")
 	public void i_create_a_new_alerter() {

@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class HourlyForecastAnalysis {
+public class HourlyForecastAnalysisIT {
 
 	@When("I query for an analysis of hourly forecasts for a city by name")
 	public void i_query_for_an_analysis_of_hourly_forecasts_for_a_city_by_name() {

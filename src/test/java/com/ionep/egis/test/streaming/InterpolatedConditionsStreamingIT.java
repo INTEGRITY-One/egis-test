@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class InterpolatedConditionsStreaming {
+public class InterpolatedConditionsStreamingIT {
 
 	@When("I start a stream of interpolated conditions for a geographic location that exists")
 	public void i_start_a_stream_of_interpolated_conditions_for_a_geographic_location_that_exists() {

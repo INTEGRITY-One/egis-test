@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class WeatherConditionsStreaming {
+public class WeatherConditionsStreamingIT {
 
 	@When("I start a stream of weather conditions for a city that exists")
 	public void i_start_a_stream_of_weather_conditions_for_a_city_that_exists() {

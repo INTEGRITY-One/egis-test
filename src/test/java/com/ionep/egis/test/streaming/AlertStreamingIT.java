@@ -4,7 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class AlertStreaming {
+public class AlertStreamingIT {
 
 	@When("I start a stream of alerts for a city that exists")
 	public void i_start_a_stream_of_alerts_for_a_city_that_exists() {
